@@ -1,2 +1,21 @@
 # learning_docker
 learning docker from amigoscourse
+
+1. Image is a template for creating an environment of your choice
+2. (docker pull imageName)
+3. (docker images) - see the list of images
+4. (docker run imagename)
+5. (docker container ls) = (docker ps)
+6. (docker run -d imageName) - run in detached mode
+7. (docker stop containerID/container name)
+8. (docker run -d -p 8080:80 imageName) -  80/TCP is the port no. of the container which can be seen in the docker ps, here we map the localhost 8080 to the port 80 of the container
+   * We can access the image on webpage by entering localhost:8080
+9. (docker run -d -p 8080:80 -p 3000:80 imageName) - can map multiple ports
+10. (docker stop containerID/container name)
+11. (docker ps -a) to show all the containers alongside that had stopped
+12. (docker rm containername/id)
+13. (docker ps -aq) - give only ids of all the containers
+14. docker rm $(docker ps -aq) - delete the things given bt this command
+15. (docker run --name containerName imageName) - we can manually name container instead of the random name given by pc
+16. (docker exec -it website bash) - to execute in interactive mode
+
