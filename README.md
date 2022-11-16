@@ -18,6 +18,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 9. Volume:- allows sharing data between host and container, and also between containers
 10. If we add files and folders in this volume in host - they will show up in containers and vice versa
 11. Dockerfile :- allows us to build a new image, contains list of steps on how to create images
+12. 
 
 ### Learning steps:
 1. We go to docker hub and explore images
@@ -57,7 +58,9 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 31. using command :- docker run --name website_2 --volumes-from website -d -p 8000:80 nginx :- refer cmd 21
 32. We create new container called website_2 and mount the volume from the container website into website_2.
 33. We give it a different port no. and check if the website is running
-34. Dockerfile-
+34. Dockerfile :- refer theory 11
+35. We create a docker file with the base image nginx, we add the files from the website folder in the container adresss :- /usr/share/nginx/html, and this is not a volume mount
+
 
 ### Usefull commands:
 
