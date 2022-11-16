@@ -17,6 +17,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 8. Container is a running instance of image
 9. Volume:- allows sharing data between host and container, and also between containers
 10. If we add files and folders in this volume in host - they will show up in containers and vice versa
+11. Dockerfile :- allows us to build a new image, contains list of steps on how to create images
 
 ### Learning steps:
 1. We go to docker hub and explore images
@@ -52,7 +53,11 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 27. The last step creates a file also at host refer theory 10
 28. search for a theme on bootstrap single page template, download, copy the content and paste in the website folder and delete all old files
 29. run docker and check the website on localhost:8080 
-
+30. Sharing volumes between containers- 
+31. using command :- docker run --name website_2 --volumes-from website -d -p 8000:80 nginx :- refer cmd 21
+32. We create new container called website_2 and mount the volume from the container website into website_2.
+33. We give it a different port no. and check if the website is running
+34. Dockerfile-
 
 ### Usefull commands:
 
@@ -77,3 +82,4 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 18. docker rm -f <containerid/name>
 19. docker ps --format=FORMAT :- to see the container info in better format
 20. docker run -v <addressOfTheFolderInHOST>:<addressOfTheFolderInDocker> <imageName> - mount the volume while running the images
+21. docker run --name <toBeCreatedContainerName> --volumes-from <containerNameWhoseVolumeWeNeed>  <image_name> :- to mount the volumes from one container to other 
