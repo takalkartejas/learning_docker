@@ -59,7 +59,9 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 32. We create new container called website_2 and mount the volume from the container website into website_2.
 33. We give it a different port no. and check if the website is running
 34. Dockerfile :- refer theory 11
-35. We create a docker file with the base image nginx, we add the files from the website folder in the container adresss :- /usr/share/nginx/html, and this is not a volume mount
+35. We create a docker file with the base image nginx, we add the files from the website folder in the container adresss :- /usr/share/nginx/html, and this is not a volume mount, 
+36. refer DockerFile for comments
+37. build the image using :- docker build -t website:latest .
 
 
 ### Usefull commands:
@@ -86,3 +88,4 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 19. docker ps --format=FORMAT :- to see the container info in better format
 20. docker run -v <addressOfTheFolderInHOST>:<addressOfTheFolderInDocker> <imageName> - mount the volume while running the images
 21. docker run --name <toBeCreatedContainerName> --volumes-from <containerNameWhoseVolumeWeNeed>  <image_name> :- to mount the volumes from one container to other 
+22. docker build -t <name>:<tag> <locatiomOfDockerFile> :- build image using DockerFile
