@@ -2,6 +2,15 @@
 
 Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 
+### Theroy-
+1. Docker is a tool for running applications in an isolated enviornment
+2. It is similar to virtual mahine
+3. Standard for software deployment
+4. If you create a package in docker it is sure to work in any system
+5. Containers are an abstraction at the app layer that packages 'code' and 'dependencies' together. Multiple containers can run on the same machine and share the OS kernel with other containers, each running as isolated processes in user space.
+6. A container does not require a full os it just shares the underlying os with other containers.
+7. ![Screenshot from 2022-11-16 17-09-58](https://user-images.githubusercontent.com/67382565/202233330-61015c0e-c85c-44bc-8a1b-0aa59fd2cdc9.png)
+
 ### Learning steps:
 1. Mounting a folder to the container-
 
