@@ -15,6 +15,9 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 * Image has everything needed to run your Apps.
 * OS, Software, App Code
 8. Container is a running instance of image
+9. Volume:- allows sharing data between host and container, and also between containers
+10. If we add files and folders in this volume in host - they will show up in containers and vice versa
+
 ### Learning steps:
 1. We go to docker hub and explore images
 2. Here we download ngnix image using :- docker pull nginx
@@ -38,7 +41,18 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 * '--name' for name
 * 'ngnix:latest: image name and tag
 18. Create the FORMAT variable in bashrc and give it a column format to make it easy to see
-19. We can use the command (docker ps --format=FORMAT) to see the container info in better format  
+19. We can use the command (docker ps --format=FORMAT) to see the container info in better format 
+20. Volume :- refer theory 9 to 10
+21. Now we have created a folder called website in the directory
+22. Create index.html inside the folder and mount the folder as a volume in /usr/share/nginx/html
+23. We use the command :- docker run --name website -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:80 nginx :- refer cmd 17 and 20 :- dont use the ro flag if you wish to modify the directory
+24. We go on browser and do localhost:8080 and see the html page that we created
+25. We do docker exec -it website bash to go inside container
+26. We remove the ro flag while running the container again and we go inside the html folder in address mentioned at 23. and touch a about.html file 
+27. The last step creates a file also at host refer theory 10
+28. search for a theme on bootstrap single page template, download, copy the content and paste in the website folder and delete all old files
+29. run docker and check the website on localhost:8080 
+
 
 ### Usefull commands:
 
@@ -62,3 +76,4 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 17. pwd :- gives the address of current directory (e.g.- /home/tejas/study/learning_docker) 
 18. docker rm -f <containerid/name>
 19. docker ps --format=FORMAT :- to see the container info in better format
+20. docker run -v <addressOfTheFolderInHOST>:<addressOfTheFolderInDocker> <imageName> - mount the volume while running the images
