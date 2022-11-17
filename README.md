@@ -101,6 +101,9 @@ Step 4/6 : RUN npm install -g npm
 65. Lets try pulling alpine version of node:- docker pull node:lts-alpine :- lts stands for latest
 66. The alpine version is jsut 167 mb and latest version of node is 995 MB
 67. Now we change the base image in our Dockerfile to node:alpine and also in other Dockerfile to nginx:alpine
+68. user-service-api images has reduced to 187 MB from 1GB
+69. The old images are overwritten everytime we do docker build for same image, they are known as dangling images
+70. remove dangling images using docker rmi $(docker images -f'dangling=true' -q)
 ### Usefull commands:
 
 1. Image is a template for creating an environment of your choice
@@ -127,3 +130,6 @@ Step 4/6 : RUN npm install -g npm
 21. docker run --name <toBeCreatedContainerName> --volumes-from <containerNameWhoseVolumeWeNeed>  <image_name> :- to mount the volumes from one container to other 
 22. docker build -t <name>:<tag> <locatiomOfDockerFile> :- build image using DockerFile
 23. docker image rm
+24. docker images -f'dangling=true' :- gives all dangling images that has tag <none> which means they have been overwritten by other image
+25. docker images -f'dangling=true' -q :- give only the image id of dangling images
+26. docker rmi $(docker images -f'dangling=true' -q) :- delete all dangling images
