@@ -18,7 +18,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 9. Volume:- allows sharing data between host and container, and also between containers
 10. If we add files and folders in this volume in host - they will show up in containers and vice versa
 11. Dockerfile :- allows us to build a new image, contains list of steps on how to create images
-12. 
+12. .dockerignore:- when we are doing ADD . ., it will add all the files in the docker. We can exclude some files by editing .dockerignore
 
 ### Learning steps:
 1. We go to docker hub and explore images
@@ -73,8 +73,10 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 46. Modify to return json array
 47. We have created a simple API!
 48. Now we have to dockerize this api
-49. Create a Dockerfile in user_service_api folder, refer comments
-
+49. Create a Dockerfile in user_service_api folder, refer comment
+50. Run docker using :- docker run --name user-api -d -p 3000:3000 usr-service-api:latest
+51. Express js listens to port 3000 by default, we map port 3000 of host to port 3000 of docker
+52. .dockerignore:- when we are doing ADD . ., it will add all the files in the docker. We can exclude some files by editing .dockerignore
 
 
 ### Usefull commands:
@@ -102,3 +104,6 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 20. docker run -v <addressOfTheFolderInHOST>:<addressOfTheFolderInDocker> <imageName> - mount the volume while running the images
 21. docker run --name <toBeCreatedContainerName> --volumes-from <containerNameWhoseVolumeWeNeed>  <image_name> :- to mount the volumes from one container to other 
 22. docker build -t <name>:<tag> <locatiomOfDockerFile> :- build image using DockerFile
+23. docker image rm
+24. In this case we do not need to add node_modules as they will be installed in docker due to 'npm install' commands
+25. Create the .dockerignore file
