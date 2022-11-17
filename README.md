@@ -93,9 +93,14 @@ Step 3/6 : ADD . .
  ---> 3c7ac8cfbfeb
 Step 4/6 : RUN npm install -g npm
  ---> Running in 3e88b6855c8f
-58. The 4th step is heavy and  5th step is npm install which is also heavy, these steps are not using cache as the step befor them - ADD . . is changing due to the small change we made in node.js
+58. The 4th step is heavy and  5th step is npm install which is also heavy, these steps are not using cache as the step befor them - ADD . . is changing due to the small change we made in index.js
 59. We need the package.json file for installing the node dependencies. Therefore we will add a json file first then run install and then ADD . ., see commit
-
+60. build the image then change the index.js file and then build the image again
+61. In first build it will download all dependencies and in second build it will use chace improving the speed
+62. Alpine:- alpine is small in size and efficent, every image has a alpine tag eg. - alpine linux
+65. Lets try pulling alpine version of node:- docker pull node:lts-alpine :- lts stands for latest
+66. The alpine version is jsut 167 mb and latest version of node is 995 MB
+67. Now we change the base image in our Dockerfile to node:alpine and also in other Dockerfile to nginx:alpine
 ### Usefull commands:
 
 1. Image is a template for creating an environment of your choice

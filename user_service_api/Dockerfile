@@ -1,4 +1,4 @@
-FROM node:latest             
+FROM node:alpine             
 #there is already a base image for node available online
 WORKDIR /app
 # Use this folder or create it if it does not exist
