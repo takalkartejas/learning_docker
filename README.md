@@ -69,7 +69,11 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 42. Create a dir. called user_service_api and do npm init
 43. copy the helloworld example from the getting started page of express.js and create index.js
 44. Run the file and check output in browser
- 
+45. Modify the file to send a json object and check on browser check commits
+46. Modify to return json array
+47. We have created a simple API!
+48. Now we have to dockerize this api
+49. Create a Dockerfile in user_service_api folder, refer comments
 
 
 
