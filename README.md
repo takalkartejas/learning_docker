@@ -66,8 +66,10 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 39. Run the container using new image:-docker run --name website -p 8080:80 -d website:latest
 40. check if website is running
 41. Install node.js and express
-42. Create a dir. called user_service_api
-43. copy the helloworld example from the getting started page of express.js and create index.js 
+42. Create a dir. called user_service_api and do npm init
+43. copy the helloworld example from the getting started page of express.js and create index.js
+44. Run the file and check output in browser
+ 
 
 
 
