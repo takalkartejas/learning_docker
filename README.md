@@ -59,9 +59,16 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 32. We create new container called website_2 and mount the volume from the container website into website_2.
 33. We give it a different port no. and check if the website is running
 34. Dockerfile :- refer theory 11
-35. We create a docker file with the base image nginx, we add the files from the website folder in the container adresss :- /usr/share/nginx/html, and this is not a volume mount, 
-36. refer DockerFile for comments
+35. We create a docker file with the base image nginx, we add the files from the website folder in the container adresss :- /usr/share/nginx/html, and this is not a volume mount, its static content  
+36. refer Dockerfile for comments
 37. build the image using :- docker build -t website:latest .
+38. The comments should be placed on newline in Dockerfile
+39. Run the container using new image:-docker run --name website -p 8080:80 -d website:latest
+40. check if website is running
+41. Install node.js and express
+42. Create a dir. called user_service_api
+43. copy the helloworld example from the getting started page of express.js and create index.js 
+
 
 
 ### Usefull commands:
