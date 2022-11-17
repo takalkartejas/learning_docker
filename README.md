@@ -2,7 +2,7 @@
 
 Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 
-### Theroy-
+### Theory-
 1. Docker is a tool for running applications in an isolated enviornment
 2. It is similar to virtual mahine
 3. Standard for software deployment
@@ -19,6 +19,8 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 10. If we add files and folders in this volume in host - they will show up in containers and vice versa
 11. Dockerfile :- allows us to build a new image, contains list of steps on how to create images
 12. .dockerignore:- when we are doing ADD . ., it will add all the files in the docker. We can exclude some files by editing .dockerignore
+55. Caching and layers:- The image building step might take much time everytime we change something like adding more data in node.js 
+56. To avoid this the docker uses cache, this takes less time as same things need not to be done again
 
 ### Learning steps:
 1. We go to docker hub and explore images
@@ -77,7 +79,22 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 50. Run docker using :- docker run --name user-api -d -p 3000:3000 usr-service-api:latest
 51. Express js listens to port 3000 by default, we map port 3000 of host to port 3000 of docker
 52. .dockerignore:- when we are doing ADD . ., it will add all the files in the docker. We can exclude some files by editing .dockerignore
-
+53. In this case we do not need to add node_modules as they will be installed in docker due to 'npm install' commands
+54. Create the .dockerignore file and delete & create the image again
+55. Caching and layers:- The image building step might take much time everytime we change something like adding more data in node.js
+56. To avoid this the docker uses cache, this takes less time as same things need not to be done again 
+57. In our case the 1st 4 steps are :-
+ Step 1/6 : FROM node:latest
+ ---> c71adfc6ec58
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> 5ba5e764db30
+Step 3/6 : ADD . .
+ ---> 3c7ac8cfbfeb
+Step 4/6 : RUN npm install -g npm
+ ---> Running in 3e88b6855c8f
+58. The 4th step is heavy and  5th step is npm install which is also heavy, these steps are not using cache as the step befor them - ADD . . is changing due to the small change we made in node.js
+59. We need the package.json file for installing the node dependencies. Therefore we will add a json file first then run install and then ADD . ., see commit
 
 ### Usefull commands:
 
@@ -105,5 +122,3 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 21. docker run --name <toBeCreatedContainerName> --volumes-from <containerNameWhoseVolumeWeNeed>  <image_name> :- to mount the volumes from one container to other 
 22. docker build -t <name>:<tag> <locatiomOfDockerFile> :- build image using DockerFile
 23. docker image rm
-24. In this case we do not need to add node_modules as they will be installed in docker due to 'npm install' commands
-25. Create the .dockerignore file
