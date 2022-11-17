@@ -1,0 +1,8 @@
+node_modules     
+#In this case we do not need to add node_modules as they will be installed in docker due to 'npm install' commands
+Dockerfile
+#We do not need dockerfile in our container
+.git
+#also no need for git folder
+*.lol 
+#ignore any file with extention lol
