@@ -28,7 +28,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 
 ## Learning steps:
 <details> <summary>
- 1. Pulling and running docker images 
+1. Pulling and running docker images
    
 </summary>
 
