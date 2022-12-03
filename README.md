@@ -37,7 +37,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
    3. Check the image using :- docker images
    4. Run the image using :- (docker run nginx:latest)  here 'latest' is a tag - can be 1.0, 2.0 etc.
    5. Check the container using the command - (docker ps) in other container
-   6. run in detached mode :- refer command 6.
+   6. run in detached mode :- refer command 2.1
 </details>
 <details> <summary>
 2. Exploring ports
@@ -46,7 +46,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
    1. We notice the port name as - '80/tcp' in docker ps
    2. We want to map the port 8080 of our local host to the port 80 of the container :- refer command 8.
    3.  We verify by going on browser and typing localhost:8080
-   4.  We map another port to the port 'tcp' refer command 9.
+   4.  We map another port to the port 'tcp' refer command 3.1
    5.  we verify by typing both ports on browser
 </details><details> <summary>   
 3. Managing containers
@@ -54,9 +54,9 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 
    1.  The old container does not get deleted after stopping, we can do 'docker start <containername/id>' to start the container
    2.  The container will automatically get a random name everytime unless you specify it 
-   3.  We can delete all containers at once :- refer cmd 14
-   4.  we can delete containers forcefully if they are running or some other issue shows up :1 refer cmd 18
-   5.  We can name a container while starting using:- refer cmd 15
+   3.  We can delete all containers at once :- refer cmd 2.8 and 2.9
+   4.  we can delete containers forcefully if they are running or some other issue shows up refer cmd 2.7
+   5.  We can name a container while starting using cmd 10
    6.  We write a big command using all the things mentioned earlier as - docker run --name website -d -p 3000:80 -p 8080:80 nginx:latest :-
        * '-d' for detached mode
        * '-p' for port
@@ -70,7 +70,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 
 1.  Now we have created a folder called website in the directory
 2.  Create index.html inside the folder and mount the folder as a volume in /usr/share/nginx/html
-3.  We use the command :- docker run --name website -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:80 nginx :- refer cmd 17 and 20 :- dont use the ro flag if you wish to modify the directory
+3.  We use the command :- docker run --name website -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:80 nginx :- refer cmd 4.1:- dont use the 'ro' flag if you wish to modify the directory, pwd :- gives the address of current directory (e.g.- /home/tejas/study/learning_docker)
 4.  We go on browser and do localhost:8080 and see the html page that we created
 5.  We do docker exec -it website bash to go inside container
 6.  We remove the ro flag while running the container again and we go inside the html folder in address mentioned at 23. and touch a about.html file 
@@ -159,36 +159,36 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 
 ## Usefull commands:
 ### 1. Docker images
-   1. docker pull <imageName>
+   1. docker pull [imageName]
    2. docker images :- see the list of images
    3.  docker image rm : delete image
    4.  docker rmi:- delete image
-   5.  docker images -f'dangling=true' :- gives all dangling images that has tag <none> which means they have been overwritten by other image
+   5.  docker images -f'dangling=true' :- gives all dangling images that has tag [none] which means they have been overwritten by other image
    6.  docker images -f'dangling=true' -q :- give only the image id of dangling images
    7.  docker rmi $(docker images -f'dangling=true' -q) :- delete all dangling images
-   8. docker build -t <name>:<tag> <locationOfDockerFile> :- build image using DockerFile
+   8. docker build -t [name]:[tag] [locationOfDockerFile] :- build image using DockerFile
    
 ### 2. Docker containers   
-   1. docker run <imagename>:<tag>
+   1. docker run [imagename]:[tag]
    2. docker container ls :- docker ps
-   3. docker run -d <imageName> :- run in detached mode
-   4. docker stop <containerID/containername>
+   3. docker run -d [imageName] :- run in detached mode
+   4. docker stop [containerID/containername]
    5.  docker ps -a :-  to show all the containers alongside that had stopped
-   6.  docker rm <containername/id>
-   7.  docker rm -f <containerid/name> 
+   6.  docker rm [containername/id]
+   7.  docker rm -f [containerid/name] : delete forcefully
    8.  docker ps -aq :- give only ids of all the containers
    9.  docker rm $(docker ps -aq) :- delete the things given by this command
-   10. docker run --name <containerName> <imageName>:- we can manually name container instead of the random name given by pc
+   10. docker run --name [containerName] [imageName]:- we can manually name container instead of the random name given by pc
    11. docker ps --format=FORMAT :- to see the container info in better format
  
 ### 3. Ports
-   1. docker run -d -p 8080:80 <imageName> :-  80/TCP is the port no. of the container which can be seen in the docker ps, here we map the localhost 8080 to the port 80 of the container
+   1. docker run -d -p 8080:80 [imageName] :-  80/TCP is the port no. of the container which can be seen in the docker ps, here we map the localhost 8080 to the port 80 of the container
       * We can access the image on webpage by entering localhost:8080
-   2. docker run -d -p 8080:80 -p 3000:80 <imageName> :- can map multiple ports
+   2. docker run -d -p 8080:80 -p 3000:80 [imageName] :- can map multiple ports
 
 ### 4. Volumes
-   1.  docker run -v <addressOfTheFolderInHOST>:<addressOfTheFolderInDocker> <imageName> - mount the volume while running the images
-   2.  docker run --name <toBeCreatedContainerName> --volumes-from <containerNameWhoseVolumeWeNeed>  <image_name> :- to mount the volumes from one container to other 
+   1.  docker run -v [addressOfTheFolderInHOST]:[addressOfTheFolderInDocker] [imageName] - mount the volume while running the images
+   2.  docker run --name [toBeCreatedContainerName] --volumes-from [containerNameWhoseVolumeWeNeed]  [image_name] :- to mount the volumes from one container to other 
 
 ### 5. Others   
    1.  docker exec -it website bash :- to execute in interactive mode
