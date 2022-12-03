@@ -23,7 +23,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 12. .dockerignore:- when we are doing ADD . ., it will add all the files in the docker. We can exclude some files by editing .dockerignore
 13. Caching and layers:- The image building step might take much time everytime we change something like adding more data in node.js 
 14. To avoid this the docker uses cache, this takes less time as same things need not to be done again
-
+15. Tags and version:- allows you to control version, avoids breaking changes (eg. if you build your software using node:latest and the latest version chages from 8 to 9 breaking your code)
 ---
 
 ## Learning steps:
@@ -56,7 +56,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
    2.  The container will automatically get a random name everytime unless you specify it 
    3.  We can delete all containers at once :- refer cmd 2.8 and 2.9
    4.  we can delete containers forcefully if they are running or some other issue shows up refer cmd 2.7
-   5.  We can name a container while starting using cmd 10
+   5.  We can name a container while starting using cmd 2.10
    6.  We write a big command using all the things mentioned earlier as - docker run --name website -d -p 3000:80 -p 8080:80 nginx:latest :-
        * '-d' for detached mode
        * '-p' for port
@@ -82,7 +82,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 5. Sharing volumes between containers
 </summary>   
 
- 1.  using command :- docker run --name website_2 --volumes-from website -d -p 8000:80 nginx :- refer cmd 21
+ 1.  using command :- docker run --name website_2 --volumes-from website -d -p 8000:80 nginx :- refer cmd 4.2
  2.  We create new container called website_2 and mount the volume from the container website into website_2.
  3.  We give it a different port no. and check if the website is running
 
@@ -118,7 +118,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
    1.  .dockerignore:- when we are doing ADD . ., it will add all the files in the docker. We can exclude some files by editing .dockerignore
    2.  In this case we do not need to add node_modules as they will be installed in docker due to 'npm install' commands
    3.  Create the .dockerignore file and delete & create the image again
-</details><details> <summary>   
+</details> <details> <summary>   
 9.  Caching and layers
 </summary>   
 
@@ -155,6 +155,8 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 2.  remove dangling images using docker rmi $(docker images -f'dangling=true' -q)
 </details>    
 
+11. Tagging and versioning :- refer theory 15
+    1. change nginx version in websites's dockerfile from alpine to 1.17.2 - alpine
 ---
 
 ## Usefull commands:
