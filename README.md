@@ -4,7 +4,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 
 ---
 
-## Theory-
+## Theory
 1. Docker is a tool for running applications in an isolated enviornment
 2. It is similar to virtual mahine
 3. Standard for software deployment
@@ -13,16 +13,16 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 6. A container does not require a full os it just shares the underlying os with other containers.
  ![Screenshot from 2022-11-16 17-09-58](https://user-images.githubusercontent.com/67382565/202233330-61015c0e-c85c-44bc-8a1b-0aa59fd2cdc9.png)
 7. Image - 
-* Image is a template for creating an enviornment of your choice.
-* Image has everything needed to run your Apps.
-* OS, Software, App Code
+   * Image is a template for creating an enviornment of your choice.
+   * Image has everything needed to run your Apps.
+   * OS, Software, App Code
 8. Container is a running instance of image
 9. Volume:- allows sharing data between host and container, and also between containers
 10. If we add files and folders in this volume in host - they will show up in containers and vice versa
 11. Dockerfile :- allows us to build a new image, contains list of steps on how to create images
 12. .dockerignore:- when we are doing ADD . ., it will add all the files in the docker. We can exclude some files by editing .dockerignore
-55. Caching and layers:- The image building step might take much time everytime we change something like adding more data in node.js 
-56. To avoid this the docker uses cache, this takes less time as same things need not to be done again
+13. Caching and layers:- The image building step might take much time everytime we change something like adding more data in node.js 
+14. To avoid this the docker uses cache, this takes less time as same things need not to be done again
 
 ---
 
@@ -155,32 +155,46 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 2.  remove dangling images using docker rmi $(docker images -f'dangling=true' -q)
 </details>    
 
-## Usefull commands:
+---
 
-1. Image is a template for creating an environment of your choice
-2. docker pull <imageName>
-3. docker images :- see the list of images
-4. docker run <imagename>:<tag>
-5. docker container ls :- docker ps
-6. docker run -d <imageName> :- run in detached mode
-7. docker stop <containerID/containername>
-8. docker run -d -p 8080:80 <imageName> :-  80/TCP is the port no. of the container which can be seen in the docker ps, here we map the localhost 8080 to the port 80 of the container
-   * We can access the image on webpage by entering localhost:8080
-9. docker run -d -p 8080:80 -p 3000:80 <imageName> :- can map multiple ports
-10. docker stop <containerID/containername>
-11. docker ps -a :-  to show all the containers alongside that had stopped
-12. docker rm <containername/id>
-13. docker ps -aq :- give only ids of all the containers
-14. docker rm $(docker ps -aq) :- delete the things given bt this command
-15. docker run --name <containerName> <imageName>:- we can manually name container instead of the random name given by pc
-16. docker exec -it website bash :- to execute in interactive mode
-17. pwd :- gives the address of current directory (e.g.- /home/tejas/study/learning_docker) 
-18. docker rm -f <containerid/name>
-19. docker ps --format=FORMAT :- to see the container info in better format
-20. docker run -v <addressOfTheFolderInHOST>:<addressOfTheFolderInDocker> <imageName> - mount the volume while running the images
-21. docker run --name <toBeCreatedContainerName> --volumes-from <containerNameWhoseVolumeWeNeed>  <image_name> :- to mount the volumes from one container to other 
-22. docker build -t <name>:<tag> <locatiomOfDockerFile> :- build image using DockerFile
-23. docker image rm
-24. docker images -f'dangling=true' :- gives all dangling images that has tag <none> which means they have been overwritten by other image
-25. docker images -f'dangling=true' -q :- give only the image id of dangling images
-26. docker rmi $(docker images -f'dangling=true' -q) :- delete all dangling images
+## Usefull commands:
+### 1. Docker images
+   1. docker pull <imageName>
+   2. docker images :- see the list of images
+   3.  docker image rm : delete image
+   4.  docker rmi:- delete image
+   5.  docker images -f'dangling=true' :- gives all dangling images that has tag <none> which means they have been overwritten by other image
+   6.  docker images -f'dangling=true' -q :- give only the image id of dangling images
+   7.  docker rmi $(docker images -f'dangling=true' -q) :- delete all dangling images
+   8. docker build -t <name>:<tag> <locationOfDockerFile> :- build image using DockerFile
+   
+### 2. Docker containers   
+   1. docker run <imagename>:<tag>
+   2. docker container ls :- docker ps
+   3. docker run -d <imageName> :- run in detached mode
+   4. docker stop <containerID/containername>
+   5.  docker ps -a :-  to show all the containers alongside that had stopped
+   6.  docker rm <containername/id>
+   7.  docker rm -f <containerid/name> 
+   8.  docker ps -aq :- give only ids of all the containers
+   9.  docker rm $(docker ps -aq) :- delete the things given by this command
+   10. docker run --name <containerName> <imageName>:- we can manually name container instead of the random name given by pc
+   11. docker ps --format=FORMAT :- to see the container info in better format
+ 
+### 3. Ports
+   1. docker run -d -p 8080:80 <imageName> :-  80/TCP is the port no. of the container which can be seen in the docker ps, here we map the localhost 8080 to the port 80 of the container
+      * We can access the image on webpage by entering localhost:8080
+   2. docker run -d -p 8080:80 -p 3000:80 <imageName> :- can map multiple ports
+
+### 4. Volumes
+   1.  docker run -v <addressOfTheFolderInHOST>:<addressOfTheFolderInDocker> <imageName> - mount the volume while running the images
+   2.  docker run --name <toBeCreatedContainerName> --volumes-from <containerNameWhoseVolumeWeNeed>  <image_name> :- to mount the volumes from one container to other 
+
+### 5. Others   
+   1.  docker exec -it website bash :- to execute in interactive mode
+   2.  pwd :- gives the address of current directory (e.g.- /home/tejas/study/learning_docker) 
+
+  
+
+
+
