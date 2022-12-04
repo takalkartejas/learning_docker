@@ -24,6 +24,13 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 13. Caching and layers:- The image building step might take much time everytime we change something like adding more data in node.js 
 14. To avoid this the docker uses cache, this takes less time as same things need not to be done again
 15. Tags and version:- allows you to control version, avoids breaking changes (eg. if you build your software using node:latest and the latest version chages from 8 to 9 breaking your code)
+16. Docker Registries:- 
+   1. server side application that stores and lets you distribute docker images
+   2. can use docker registris for CD/CI piplines
+   3. Can run parts of our application
+   4. We use docker push/pull
+![Screenshot from 2022-12-04 21-21-42](https://user-images.githubusercontent.com/67382565/205513783-da636623-0556-4506-80bf-04972a31e7e1.png)
+
 ---
 
 ## Learning steps:
@@ -156,7 +163,10 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 </details>    
 
 11. Tagging and versioning :- refer theory 15
-    1. change nginx version in websites's dockerfile from alpine to 1.17.2 - alpine
+    1. change nginx version in websites's dockerfile from alpine to 1.17.2 - alpine and user-service-api dockerfile to 10.16.1-alpine
+    2. Build image and run containers
+    3. tag a already existing node:latest image using:- docker tag node:alpine node:1 refer cmd 1.9
+    4. modify something, create image and then tag as version 2 instead of 1
 ---
 
 ## Usefull commands:
@@ -169,6 +179,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
    6.  docker images -f'dangling=true' -q :- give only the image id of dangling images
    7.  docker rmi $(docker images -f'dangling=true' -q) :- delete all dangling images
    8. docker build -t [name]:[tag] [locationOfDockerFile] :- build image using DockerFile
+   9. docker tag [image name]:[tag] [image name]:[new tag]
    
 ### 2. Docker containers   
    1. docker run [imagename]:[tag]

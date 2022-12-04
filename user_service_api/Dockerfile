@@ -1,6 +1,6 @@
-FROM node:10.16.1-alpine            
+FROM node:19.2.0-alpine            
 #there is already a base image for node available online
-# we changed to 10.16.1-alpine in learning tags
+# we changed to 19.2.0-alpine in learning tags
 WORKDIR /app
 # Use this folder or create it if it does not exist
 ADD package*.json ./
