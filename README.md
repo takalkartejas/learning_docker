@@ -155,58 +155,86 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 4.  Now we change the base image in our Dockerfile to node:alpine and also in other Dockerfile to nginx:alpine
 5.  user-service-api images has reduced to 187 MB from 1GB
 </details><details> <summary>
-11.    Dangling images
+11. Dangling images
 </summary>
 
 1.  The old images are overwritten everytime we do docker build for same image, they are known as dangling images
 2.  remove dangling images using docker rmi $(docker images -f'dangling=true' -q)
-</details>    
-
-11. Tagging and versioning :- refer theory 15
+</details><details> <summary>    
+12. Tagging and versioning :- refer theory 15
+   </summary>
     1. change nginx version in websites's dockerfile from alpine to 1.17.2 - alpine and user-service-api dockerfile to 10.16.1-alpine
     2. Build image and run containers
     3. tag a already existing node:latest image using:- docker tag node:alpine node:1 refer cmd 1.9
     4. modify something, create image and then tag as version 2 instead of 1
+
+ </details><details> <summary>
+ 12.  Repositories:- refer theory 16
+   </summary>
+
+1. sign in on docker hub
+2. create a public repository called website
+3. Docker command given by website:- docker push takalkartejastt/website:tagname
+4. do:- docker tag website:latest takalkartejastt/website:1
+5. login using:- docker login
+6. docker push takalkartejastt/website:1
+7. should add overview so that people can understand the image
+8. delete the image from pc
+9. Do:- docker pull takalkartejastt/website:1
+10. Note that the latest version should be pushed to dockerhub as it will pull the latest version if no tag is used while pulling.
+</details><details> <summary>
+13.  Docker inspect, log and exec
+   </summary>
+
+   1. Run a container and do :- docker inspect [container name/id]
+   2. returns a json file:- shows volume mounts, env variables like path and dependcies, image, port mapping,
+   3. docker log:- returns log , requests form firefox. also shows messege in console.log from program
+</details>
+
 ---
 
 ## Usefull commands:
 ### 1. Docker images
-   1. docker pull [imageName]
-   2. docker images :- see the list of images
-   3.  docker image rm : delete image
-   4.  docker rmi:- delete image
-   5.  docker images -f'dangling=true' :- gives all dangling images that has tag [none] which means they have been overwritten by other image
-   6.  docker images -f'dangling=true' -q :- give only the image id of dangling images
-   7.  docker rmi $(docker images -f'dangling=true' -q) :- delete all dangling images
-   8. docker build -t [name]:[tag] [locationOfDockerFile] :- build image using DockerFile
-   9. docker tag [image name]:[tag] [image name]:[new tag]
+   1. **docker pull [imageName]**
+   2. **docker images** :- see the list of images
+   3.  **docker image rm**: delete image
+   4.  **docker rmi**:- delete image
+   5.  **docker images -f'dangling=true'** :- gives all dangling images that has tag [none] which means they have been overwritten by other image
+   6.  **docker images -f'dangling=true' -q** :- give only the image id of dangling images
+   7.  **docker rmi $(docker images -f'dangling=true' -q)** :- delete all dangling images
+   8. **docker build -t [name]:[tag] [locationOfDockerFile]** :- build image using DockerFile
+   9. **docker tag [image name]:[tag] [image name]:[new tag]**
    
 ### 2. Docker containers   
-   1. docker run [imagename]:[tag]
-   2. docker container ls :- docker ps
-   3. docker run -d [imageName] :- run in detached mode
-   4. docker stop [containerID/containername]
-   5.  docker ps -a :-  to show all the containers alongside that had stopped
-   6.  docker rm [containername/id]
-   7.  docker rm -f [containerid/name] : delete forcefully
-   8.  docker ps -aq :- give only ids of all the containers
-   9.  docker rm $(docker ps -aq) :- delete the things given by this command
-   10. docker run --name [containerName] [imageName]:- we can manually name container instead of the random name given by pc
-   11. docker ps --format=FORMAT :- to see the container info in better format
+   1. **docker run [imagename]:[tag]**
+   2. **docker container ls** :- docker ps
+   3. **docker run -d [imageName]** :- run in detached mode
+   4. **docker stop [containerID/containername]**
+   5.  **docker ps -a**:-  to show all the containers alongside that had stopped
+   6.  **docker rm [containername/id]**
+   7.  **docker rm -f [containerid/name]** : delete forcefully
+   8.  **docker ps -aq** :- give only ids of all the containers
+   9.  **docker rm $(docker ps -aq)** :- delete the things given by this command
+   10. **docker run --name [containerName] [imageName]**:- we can manually name container instead of the random name given by pc
+   11. **docker ps --format=FORMAT** :- to see the container info in better format
+   12. **docker inspect [container name/id]**:- gives a json file with all container related info 
+   13. **docker log [containerName/id]**:- returns log , requests form firefox. also shows messege in console.log from program
  
 ### 3. Ports
-   1. docker run -d -p 8080:80 [imageName] :-  80/TCP is the port no. of the container which can be seen in the docker ps, here we map the localhost 8080 to the port 80 of the container
+   1. **docker run -d -p 8080:80 [imageName]** :-  80/TCP is the port no. of the container which can be seen in the docker ps, here we map the localhost 8080 to the port 80 of the container
       * We can access the image on webpage by entering localhost:8080
-   2. docker run -d -p 8080:80 -p 3000:80 [imageName] :- can map multiple ports
+   2. **docker run -d -p 8080:80 -p 3000:80 [imageName]** :- can map multiple ports
 
 ### 4. Volumes
-   1.  docker run -v [addressOfTheFolderInHOST]:[addressOfTheFolderInDocker] [imageName] - mount the volume while running the images
-   2.  docker run --name [toBeCreatedContainerName] --volumes-from [containerNameWhoseVolumeWeNeed]  [image_name] :- to mount the volumes from one container to other 
+   1.  **docker run -v [addressOfTheFolderInHOST]:[addressOfTheFolderInDocker] [imageName]** - mount the volume while running the images
+   2.  **docker run --name [toBeCreatedContainerName] --volumes-from [containerNameWhoseVolumeWeNeed]  [image_name]** :- to mount the volumes from one container to other 
 
 ### 5. Others   
-   1.  docker exec -it website bash :- to execute in interactive mode
-   2.  pwd :- gives the address of current directory (e.g.- /home/tejas/study/learning_docker) 
+   1.  **docker exec -it website bash**:- to execute in interactive mode
+   2.  **pwd** :- gives the address of current directory (e.g.- /home/tejas/study/learning_docker) 
 
+### 6. Docker hub
+   1. **docker login**
   
 
 
