@@ -216,6 +216,7 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
    8.  **docker ps -aq** :- give only ids of all the containers
    9.  **docker rm $(docker ps -aq)** :- delete the things given by this command
    10. **docker run --name [containerName] [imageName]**:- we can manually name container instead of the random name given by pc
+   11. **sudo docker run –it [container_name]:[tag] /bin/sh** :- run container in interactive mode
    11. **docker ps --format=FORMAT** :- to see the container info in better format
    12. **docker inspect [container name/id]**:- gives a json file with all container related info 
    13. **docker log [containerName/id]**:- returns log , requests form firefox. also shows messege in console.log from program
