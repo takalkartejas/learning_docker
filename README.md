@@ -233,7 +233,12 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
 ### 5. Others   
    1.  **docker exec -it website bash**:- to execute in interactive mode
    2.  **pwd** :- gives the address of current directory (e.g.- /home/tejas/study/learning_docker) 
-
+   3. ``` bash
+      docker container prune -f
+      docker image prune -f
+      docker volume prune -f
+      ```
+      Reclaim lost memory to unused dockers or images
 ### 6. Docker hub
    1. **docker login**
   
