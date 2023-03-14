@@ -235,7 +235,11 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
    2.  **pwd** :- gives the address of current directory (e.g.- /home/tejas/study/learning_docker) 
    3. ``` bash
       docker container prune -f
+      ```
+      ``` bash
       docker image prune -f
+      ```
+      ``` bash
       docker volume prune -f
       ```
       Reclaim lost memory to unused dockers or images
