@@ -245,6 +245,9 @@ Video link - https://www.youtube.com/watch?v=p28piYY_wv8&t=2869s
       ``` bash
       docker container prune -f && docker image prune -f && docker volume prune -f
       ```
+      ``` bash
+      docker system prune -f 
+      ```
       Reclaim lost memory to unused dockers or images
 ### 6. Docker hub
    1. **docker login**
